@@ -1,0 +1,121 @@
+/*@import url(http://fonts.googleapis.com/css?family=Raleway:400,700);*/
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+
+body {
+	font: 15px/20px 'Roboto', sans-serif; /*'Lucida Grande', Tahoma, Verdana, sans-serif;*/
+	font-weight: 400;
+}
+
+a {
+	text-decoration: none;
+	padding: 5px;
+	margin:8px 0;
+	-moz-transition: 0.3s;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.cool-link {
+	display:block;
+	text-align:right;
+	color: #FFFFFF;
+	background-color: #7A7A7A;
+	text-shadow: none;
+	border-radius: 4px;
+	-moz-box-shadow: 2px 2px 5px #141414;
+	-webkit-box-shadow: 2px 2px 5px #141414;
+	-o-box-shadow: 2px 2px 5px #141414;
+	box-shadow: 2px 2px 5px #141414;
+}
+.cool-link:hover { background-color: #9A3234; }
+
+#tutto { 
+	overflow:hidden;
+	padding:20px;
+}
+#sidemenu {
+	float: left;
+	width: 170px;
+	padding: 20px 20px 0 0;
+}
+#container {
+	border-left: 2px solid black; 
+	margin-left:190px;
+	padding:20px;
+}
+
+#temperature {
+	height: 400px;
+	margin: 0 auto;
+}
+
+.info {
+	margin-left: 20px;
+	margin-bottom: 10px;
+	height:24px;
+	line-height: 24px;
+}
+
+.progress-container {
+	margin: 10px 0px 10px 20px;
+}
+
+.bar-label, .bar-value {
+	float:left;
+	line-height:24px;
+}
+.bar-value { position: absolute; left: 500px; }
+.bar-label { font-weight: 700; }
+
+.progress {
+	margin-left: 500px;
+	width: auto;
+	min-width: 100px;
+	padding: 4px;
+	background: rgba(0, 0, 0, 0.7);
+	border-radius: 6px;
+/*	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);*/
+/*	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);*/
+	-moz-box-shadow: 2px 2px 5px #141414;
+	-webkit-box-shadow: 2px 2px 5px #141414;
+	-o-box-shadow: 2px 2px 5px #141414;
+	box-shadow: 2px 2px 5px #141414;
+}
+
+.progress-bar {
+	position: relative;
+	height: 16px;
+	border-radius: 4px;
+	-webkit-transition: 0.4s linear;
+	-moz-transition: 0.4s linear;
+	-o-transition: 0.4s linear;
+	transition: 0.4s linear;
+	-webkit-transition-property: width, background-color;
+	-moz-transition-property: width, background-color;
+	-o-transition-property: width, background-color;
+	transition-property: width, background-color;
+	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+	box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+}
+.progress-bar:before, .progress-bar:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+.progress-bar:before {
+	bottom: 0;
+	background: url("../img/stripes.png") 0 0 repeat;
+	border-radius: 4px 4px 0 0;
+}
+.progress-bar:after {
+	z-index: 2;
+	bottom: 45%;
+	border-radius: 4px;
+	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+}
