@@ -22,6 +22,20 @@ Requirements for the correct functionality of this tools are:
    
 ## Getting Started
 
+In the package are already present some data files. In order to update these files with values from your raspberry you have to:
+
+1. delete these files: `rm info-rasp/startdate.dat info-rasp/temp_log.dat info-rasp/temp_long_log.dat info-rasp/updates/updates.txt`
+2. recreating an empty version of them: `touch info-rasp/startdate.dat info-rasp/temp_log.dat info-rasp/temp_long_log.dat info-rasp/updates/updates.txt`
+3. make the scripts executable: `chmod +x info-rasp/temp.py info-rasp/updates/updates.sh`
+4. adding these scripts to your *crontab* with `sudo crontab -e` and writing at the bottom
+
+```
+# get the temperature every minute
+*/1 * * * * /path/to/script/./temp.py > /dev/null 2>&1
+
+# check the presence of updates at 8:00 AM and 4:00 PM every day
+0 8,16 * * * /path/to/script/./updates.sh > /dev/null 2>&1
+```
 
 ## Examples
 
