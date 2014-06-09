@@ -40,9 +40,12 @@
 	}
 
 	# Get the percentage of disk usage
-	$junk = shell_exec("df | grep '/dev/root'");
-	$disk = substr($junk,strpos($junk,"%")-2,2);
-
+	$junk = shell_exec("df -BM | grep '/dev/root'");
+    preg_match_all('!\d+!', $junk, $matches);
+    $nums = $matches[0];
+    $rootu = $nums[1] / 1024.0;
+    $roott = ($nums[1] + $nums[2]) / 1024.0;
+   
 	# Read the current memory output of free -mt
 	$raw = array();
 	$handle = popen('free -mt 2>&1', 'r');
@@ -187,7 +190,7 @@
 
 		<div class="progress-container">
 			<div class="bar-label">Total memory (chached):</div>
-			<div class="bar-value"><?php echo ($utot-$buff-$cache) . " (". $utot .") / ". $ttot . " Mb" ?></div>
+			<div class="bar-value"><?php echo ($utot-$buff-$cache) . " (". $utot .") / ". $ttot . " MB" ?></div>
 			<div class="progress">
 		      		<div class="progress-bar"
 					style="width: <?php echo $pertot ?>%;
@@ -196,7 +199,7 @@
 		</div>
 		<div class="progress-container">
 			<div class="bar-label">RAM (chached):</div>
-			<div class="bar-value"><?php echo ($umem-$buff-$cache) . " (". $umem .") / ". $tmem . " Mb" ?></div>
+			<div class="bar-value"><?php echo ($umem-$buff-$cache) . " (". $umem .") / ". $tmem . " MB" ?></div>
 			<div class="progress">
 		      		<div class="progress-bar"
 					style="width: <?php echo $permem ?>%;
@@ -205,7 +208,7 @@
 		</div>
 		<div class="progress-container">
 			<div class="bar-label">Swap:</div>
-			<div class="bar-value"><?php echo $uswap . " / ". $tswap . " Mb" ?></div>
+			<div class="bar-value"><?php echo $uswap . " / ". $tswap . " MB" ?></div>
 			<div class="progress">
 		      		<div class="progress-bar" 
 					style="width: <?php echo $perswap ?>%;
@@ -214,13 +217,13 @@
 		</div>
 		<div class="progress-container">
 			<div class="bar-label">Disk usage:</div>
-			<div class="bar-value"><?php echo number_format(14.5*$disk/100.0, 2, '.', '') . " / 14.5 Gb" ?></div>
+			<div class="bar-value"><?php printf("%3.1f / %3.1f GB", $rootu, $roott); ?></div>
 			<div class="progress">
-		      		<div class="progress-bar" 
-					style="width: <?php echo $disk ?>%;
-					 <?php progresscolor($disk) ?>"></div>
-		   	</div>
-		</div>
+				<div class="progress-bar" 
+						style="width: <?php echo $rootu/$roott*100.0 ?>%;
+						<?php progresscolor($rootu/$roott*100.0) ?>"></div>
+				</div>
+			</div>
 	</div>
 </div>
 
