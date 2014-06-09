@@ -193,8 +193,9 @@
 			<div class="bar-value"><?php echo ($utot-$buff-$cache) . " (". $utot .") / ". $ttot . " MB" ?></div>
 			<div class="progress">
 		      		<div class="progress-bar"
-					style="width: <?php echo $pertot ?>%;
-					<?php progresscolor($pertot) ?>"></div>
+							style="width: <?php echo $pertot ?>%;
+							<?php progresscolor($pertot) ?>"></div>
+		   			<div class="bar-inside-label"><?php printf("%.0f%%", $pertot) ?></div>
 		   	</div>
 		</div>
 		<div class="progress-container">
@@ -202,8 +203,9 @@
 			<div class="bar-value"><?php echo ($umem-$buff-$cache) . " (". $umem .") / ". $tmem . " MB" ?></div>
 			<div class="progress">
 		      		<div class="progress-bar"
-					style="width: <?php echo $permem ?>%;
-					<?php progresscolor($permem) ?>"></div>
+							style="width: <?php echo $permem ?>%;
+							<?php progresscolor($permem) ?>"></div>
+					<div class="bar-inside-label"><?php printf("%.0f%%", $permem) ?></div>
 		   	</div>
 		</div>
 		<div class="progress-container">
@@ -211,8 +213,9 @@
 			<div class="bar-value"><?php echo $uswap . " / ". $tswap . " MB" ?></div>
 			<div class="progress">
 		      		<div class="progress-bar" 
-					style="width: <?php echo $perswap ?>%;
-					 <?php progresscolor($perswap) ?>"></div>
+							style="width: <?php echo $perswap ?>%;
+					 		<?php progresscolor($perswap) ?>"></div>
+					<div class="bar-inside-label"><?php printf("%.0f%%", $perswap) ?></div>
 		   	</div>
 		</div>
 		<div class="progress-container">
@@ -222,10 +225,23 @@
 				<div class="progress-bar" 
 						style="width: <?php echo $rootu/$roott*100.0 ?>%;
 						<?php progresscolor($rootu/$roott*100.0) ?>"></div>
-				</div>
+				<div class="bar-inside-label"><?php printf("%.0f%%", $rootu/$roott*100.0) ?></div>
 			</div>
+		</div>
 	</div>
 </div>
 
 </body>
 </html>
+
+
+<div class="progress-container">
+                        <div class="bar-label">Swap:</div>
+                        <div class="bar-value"><?php echo $uswap . " / ". $tswap . " MB" ?></div>
+                        <div class="progress">
+                                <div class="progress-bar"
+                                        style="width: <?php echo $perswap ?>%;
+                                         <?php progresscolor($perswap) ?>"></div>
+                                <div class="bar-inside-label"><?php printf("%.0f%%", $perswap) ?></div>
+                        </div>
+                </div>

@@ -83,7 +83,21 @@ a {
 	box-shadow: 2px 2px 5px #141414;
 }
 
+.bar-inside-label {
+	height:16px; 
+	line-height:16px; 
+	color: white; 
+	text-align: right; 
+	width:auto; 
+	text-shadow: 2px 2px 5px #141414;
+}
+.bar-inside-label:after {
+	content: '';
+	clear: both;
+}
+
 .progress-bar {
+	float:left;
 	position: relative;
 	height: 16px;
 	border-radius: 4px;
