@@ -73,23 +73,32 @@
 	}
 
 	# Get uptime info from system call to uptime
-    	$uptime = exec("/usr/bin/uptime");
-		$junk = explode("user",$uptime);
-        $leftuptime = $junk[0];
-        $rightuptime = explode(":",$junk[1]);
-        $loads = explode(",",$rightuptime[1]);
+	$uptime = exec("/usr/bin/uptime");
+	$junk = explode("user",$uptime);
+    $leftuptime = $junk[0];
+    $rightuptime = explode(":",$junk[1]);
+    $loads = explode(",",$rightuptime[1]);
 
-        function formatteduptime($uptime) {
+	function formatteduptime($uptime) {
 		preg_match_all('!\d+!', $uptime, $matches);
 		$nums=$matches[0];
 		$day = 0; $hour = 0; $min = 0;
-		if (strpos($uptime,"day")) { $day = intval($nums[3]); }
-		if (strpos($uptime,"min")) {
-	       	$min = intval($nums[4]);
-	    } else {
-	        $hour = intval($nums[4]);
-	        $min =  intval($nums[5]);
-	    }
+		if (strpos($uptime,"day")) {
+			$day = intval($nums[3]);
+			if (strpos($uptime,"min")) {
+				$min = intval($nums[4]);
+			} else {
+				$hour = intval($nums[4]);
+				$min =  intval($nums[5]);
+			}
+		} else {
+			if (strpos($uptime,"min")) {
+					$min = intval($nums[3]);
+				} else {
+					$hour = intval($nums[3]);
+					$min =  intval($nums[4]);
+				}
+		}
 		if ($day  == 1) { echo $day  . " day "; }
 		if ($day  >  1) { echo $day  . " days "; }
 		if ($hour == 1) { echo $hour . " hour "; }
