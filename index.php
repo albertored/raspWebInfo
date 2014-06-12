@@ -233,15 +233,3 @@
 
 </body>
 </html>
-
-
-<div class="progress-container">
-                        <div class="bar-label">Swap:</div>
-                        <div class="bar-value"><?php echo $uswap . " / ". $tswap . " MB" ?></div>
-                        <div class="progress">
-                                <div class="progress-bar"
-                                        style="width: <?php echo $perswap ?>%;
-                                         <?php progresscolor($perswap) ?>"></div>
-                                <div class="bar-inside-label"><?php printf("%.0f%%", $perswap) ?></div>
-                        </div>
-                </div>
