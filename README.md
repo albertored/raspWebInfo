@@ -10,8 +10,10 @@ Features supported are:
 * uptime
 * available updates
 * CPU loads
-* memory used (progress bar from [Thibaut Courouble](http://www.cssflow.com/snippets/animated-progress-bar))
-* disk space (progress bar from [Thibaut Courouble](http://www.cssflow.com/snippets/animated-progress-bar))
+* memory used (*)
+* disk space (*)
+
+(*) progress bar from [Thibaut Courouble](http://www.cssflow.com/snippets/animated-progress-bar) with percentage added by me
 
 ## Requirements
 
@@ -27,14 +29,22 @@ In the package are already present some data files. In order to update these fil
 1. delete these files: `rm info-rasp/startdate.dat info-rasp/temp_log.dat info-rasp/temp_long_log.dat info-rasp/updates/updates.txt`
 2. recreating an empty version of them: `touch info-rasp/startdate.dat info-rasp/temp_log.dat info-rasp/temp_long_log.dat info-rasp/updates/updates.txt`
 3. make the scripts executable: `chmod +x info-rasp/temp.py info-rasp/updates/updates.sh`
-4. adding these scripts to your *crontab* with `sudo crontab -e` and writing at the bottom
+4. substitute the `/path/to/` strings in the `index.php`, `info-rasp/temp*.py` files with the correct path in which you put the codes
+5. adding these scripts to your *crontab* with `sudo crontab -e` and writing at the bottom
 
 ```
-# get the temperature every minute
-*/1 * * * * /path/to/script/./temp.py > /dev/null 2>&1
+# get the temperature every minute in the detailed graph
+# and every 15 minutes in the main one
+*/1 * * * * /path/to/script/./temp.py > /dev/null
+
+# if you want the mean temperature over 15 minutes for the main graph
+# and over 5 minutes in the detailed one add instead
+*/15 * * * * /path/to/script/./temp15.py > /dev/null
+*/5 * * * * /path/to/script/./temp5.py > /dev/null
+
 
 # check the presence of updates at 8:00 AM and 4:00 PM every day
-0 8,16 * * * /path/to/script/./updates.sh > /dev/null 2>&1
+0 8,16 * * * /path/to/script/./updates.sh > /dev/null
 ```
 
 ## Examples
