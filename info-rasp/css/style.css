@@ -69,8 +69,10 @@ a {
 .bar-label { font-weight: 700; }
 
 .progress {
+	position: relative;
 	margin-left: 500px;
 	width: auto;
+	height: 16px;
 	min-width: 100px;
 	padding: 4px;
 	background: rgba(0, 0, 0, 0.7);
@@ -84,16 +86,14 @@ a {
 }
 
 .bar-inside-label {
+	position: absolute;
+	left: 0;
 	height:16px; 
 	line-height:16px; 
 	color: white; 
 	text-align: right; 
-	width:auto; 
+	width:99%; 
 	text-shadow: 2px 2px 5px #141414;
-}
-.bar-inside-label:after {
-	content: '';
-	clear: both;
 }
 
 .progress-bar {
